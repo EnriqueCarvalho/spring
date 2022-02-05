@@ -4,10 +4,11 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "quadras")
-public class Quadra extends Usuario{
+public class Quadra {
 
 
     @Id
@@ -26,8 +27,17 @@ public class Quadra extends Usuario{
 
     @Column(name = "nroavaliacoes")
     private Integer nroAvaliacoes;
-    //private ArrayList<Ambiente> ambientes;
 
+
+    @OneToMany(mappedBy = "quadra")
+    private List<Ambiente> ambientes;
+
+    @OneToOne
+    @JoinColumn(name="idusuario")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "quadra")
+    private List<Reserva> reservas;
 
     public Integer getIdQuadra() {
         return idQuadra;
@@ -95,13 +105,28 @@ public class Quadra extends Usuario{
 
 
 
-/*
-    public ArrayList<Ambiente> getAmbientes() {
+    public List<Ambiente> getAmbientes() {
         return ambientes;
     }
 
-    public void setAmbientes(ArrayList<Ambiente> ambientes) {
+    public void setAmbientes(List<Ambiente> ambientes) {
         this.ambientes = ambientes;
-    }*/
+    }
 
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
 }

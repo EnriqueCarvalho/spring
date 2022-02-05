@@ -1,6 +1,7 @@
 package br.ufsm.csi.poow2.spring_rest.controller;
 
 
+import br.ufsm.csi.poow2.spring_rest.dto.QuadraDto;
 import br.ufsm.csi.poow2.spring_rest.model.Quadra;
 import br.ufsm.csi.poow2.spring_rest.repository.QuadraRepository;
 import br.ufsm.csi.poow2.spring_rest.service.QuadrasService;
@@ -22,10 +23,10 @@ public class QuadrasController {
     }
 
     @RequestMapping("/getQuadras")
-    public List<Quadra> getQuadras(){
+    public List<QuadraDto> getQuadras(){
 
 
-        List<Quadra> quadras =new QuadrasService(quadraRepository).getQuadras();
+        List<QuadraDto> quadras =new QuadrasService(quadraRepository).getQuadras();
 
         return quadras;
     }

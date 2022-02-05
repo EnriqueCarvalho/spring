@@ -1,11 +1,27 @@
 package br.ufsm.csi.poow2.spring_rest.model;
 
-public class Cliente extends Usuario{
+import javax.persistence.*;
+import java.util.List;
 
+
+@Entity
+@Table(name = "clientes")
+public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idcliente")
     private Integer idCliente;
     private String nome;
     private String cpf;
     private String fone;
+
+    @OneToOne
+    @JoinColumn(name="idusuario")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "quadra")
+    private List<Reserva> reservas;
 
     public Integer getIdCliente() {
         return idCliente;
@@ -37,5 +53,21 @@ public class Cliente extends Usuario{
 
     public void setFone(String fone) {
         this.fone = fone;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }

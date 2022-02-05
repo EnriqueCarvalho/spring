@@ -5,6 +5,7 @@ import br.ufsm.csi.poow2.spring_rest.dto.QuadraDto;
 import br.ufsm.csi.poow2.spring_rest.model.Quadra;
 
 import br.ufsm.csi.poow2.spring_rest.repository.QuadraRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,34 +16,19 @@ public class QuadrasService {
 
     @Autowired
     private final QuadraRepository quadraRepository;
+    private ModelMapper modelMapper = new ModelMapper();
 
     public QuadrasService(QuadraRepository quadraRepository) {
         this.quadraRepository = quadraRepository;
     }
 
-    public List<Quadra> getQuadras(){
+    public List<QuadraDto> getQuadras(){
         //List<QuadraDto> quadras =this.quadraToDto(new QuadraDAO().getQuadras());
         List<Quadra> quadras = quadraRepository.findAll() ;
 
-        return quadras;
+        List<QuadraDto> dto = Arrays.asList(modelMapper.map(quadras,QuadraDto[].class));
+
+        return dto;
     }
 
-    public List<QuadraDto> quadraToDto(List<Quadra> quadras){
-
-        List<QuadraDto> dtos = new ArrayList<>();
-        for(Quadra quadra: quadras){
-            QuadraDto dto = new QuadraDto();
-            dto.setIdQuadra(quadra.getIdQuadra());
-            dto.setNome(quadra.getNome());
-            dto.setCnpj(quadra.getCnpj());
-            dto.setNroAvaliacoes(quadra.getNroAvaliacoes());
-            dto.setAvaliacao(quadra.getAvaliacao());
-            dto.setBairroEnd(quadra.getBairroEnd());
-            dto.setRuaEnd(quadra.getRuaEnd());
-            dto.setNumeroEnd(quadra.getNumeroEnd());
-            dtos.add(dto);
-        }
-
-        return dtos;
-    }
 }

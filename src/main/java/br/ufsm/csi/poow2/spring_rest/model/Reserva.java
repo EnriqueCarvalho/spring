@@ -1,16 +1,32 @@
 package br.ufsm.csi.poow2.spring_rest.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
-
+@Entity
+@Table(name = "reservas")
 public class Reserva {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idreserva")
     private Integer idReserva;
+
+    @ManyToOne
+    @JoinColumn(name="idquadra")
     private Quadra quadra;
+
+    @ManyToOne
+    @JoinColumn(name="idcliente")
     private Cliente cliente;
-    private ArrayList<Ambiente> ambientes;
+
+    @ManyToOne
+    @JoinColumn(name="idambiente")
+    private Ambiente ambiente;
+
     private Date data;
     private Time horario;
 
@@ -38,12 +54,12 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public ArrayList<Ambiente> getAmbientes() {
-        return ambientes;
+    public Ambiente getAmbiente() {
+        return ambiente;
     }
 
-    public void setAmbientes(ArrayList<Ambiente> ambientes) {
-        this.ambientes = ambientes;
+    public void setAmbiente(Ambiente ambiente) {
+        this.ambiente = ambiente;
     }
 
     public Date getData() {

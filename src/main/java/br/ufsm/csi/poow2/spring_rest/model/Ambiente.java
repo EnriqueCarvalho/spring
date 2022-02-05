@@ -1,16 +1,28 @@
 package br.ufsm.csi.poow2.spring_rest.model;
 
 import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "ambientes")
 public class Ambiente {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idambiente")
     private Integer idAmbiente;
 
+    @ManyToOne
+    @JoinColumn(name="idquadra")
     private Quadra quadra;
     private String nome;
     private String descricao;
+
+    @Column(name = "capacidademax")
     private Integer capacidadeMax;
+
+    @OneToMany(mappedBy = "ambiente")
+    private List<Reserva> reservas;
 
 
     public Integer getIdAmbiente() {
@@ -52,5 +64,13 @@ public class Ambiente {
 
     public void setCapacidadeMax(Integer capacidadeMax) {
         this.capacidadeMax = capacidadeMax;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }
