@@ -27,7 +27,7 @@ public class UserDetailServiceCustomizado implements UserDetailsService {
         System.out.println("username: "+login);
 
         Usuario usuario = new UsuarioDAO(usuarioRepository).getUsuario(login);
-        System.out.println(usuario.getLogin());
+
 
         if(usuario == null){
             throw  new UsernameNotFoundException("Usuário ou senha inválidos");
