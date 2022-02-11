@@ -13,7 +13,7 @@ import java.util.List;
 
 public class QuadraDAO {
 
-    @Autowired
+
     private QuadraRepository quadraRepository;
 
     public QuadraDAO(QuadraRepository quadraRepository) {

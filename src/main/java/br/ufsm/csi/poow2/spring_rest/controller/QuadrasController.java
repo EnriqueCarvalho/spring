@@ -31,4 +31,13 @@ public class QuadrasController {
         return quadras;
     }
 
+    @RequestMapping("/novaQuadra")
+    public List<QuadraDto> novaQuadra(){
+
+
+        List<QuadraDto> quadras =new QuadrasService(quadraRepository).getQuadras();
+
+        return quadras;
+    }
+
 }

@@ -15,6 +15,7 @@ public class Usuario {
     private String login;
     private String senha;
     private String restricao;
+    private String token;
 
 
     @OneToOne(mappedBy = "usuario")
@@ -53,6 +54,14 @@ public class Usuario {
 
     public void setRestricao(String restricao) {
         this.restricao = restricao;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public Quadra getQuadra() {

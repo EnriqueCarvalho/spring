@@ -12,9 +12,7 @@ public class Ambiente {
     @Column(name = "idambiente")
     private Integer idAmbiente;
 
-    @ManyToOne
-    @JoinColumn(name="idquadra")
-    private Quadra quadra;
+
     private String nome;
     private String descricao;
 
@@ -23,6 +21,10 @@ public class Ambiente {
 
     @OneToMany(mappedBy = "ambiente")
     private List<Reserva> reservas;
+
+    /*@ManyToOne
+    @JoinColumn(name = "idquadra")
+    private Quadra quadra;*/
 
 
     public Integer getIdAmbiente() {
@@ -33,14 +35,6 @@ public class Ambiente {
         this.idAmbiente = idAmbiente;
     }
 
-
-    public Quadra getQuadra() {
-        return quadra;
-    }
-
-    public void setQuadra(Quadra quadra) {
-        this.quadra = quadra;
-    }
 
     public String getNome() {
         return nome;

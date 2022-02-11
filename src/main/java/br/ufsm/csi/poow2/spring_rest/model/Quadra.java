@@ -29,7 +29,9 @@ public class Quadra {
     private Integer nroAvaliacoes;
 
 
-    @OneToMany(mappedBy = "quadra")
+    @OneToMany( cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JoinColumn(name = "idquadra")
     private List<Ambiente> ambientes;
 
     @OneToOne

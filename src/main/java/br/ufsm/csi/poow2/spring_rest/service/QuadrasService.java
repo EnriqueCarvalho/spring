@@ -23,8 +23,8 @@ public class QuadrasService {
     }
 
     public List<QuadraDto> getQuadras(){
-        //List<QuadraDto> quadras =this.quadraToDto(new QuadraDAO().getQuadras());
-        List<Quadra> quadras = quadraRepository.findAll() ;
+        List<Quadra> quadras =new QuadraDAO(quadraRepository).getQuadras();
+        //List<Quadra> quadras = quadraRepository.findAll() ;
 
         List<QuadraDto> dto = Arrays.asList(modelMapper.map(quadras,QuadraDto[].class));
 
