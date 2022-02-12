@@ -16,7 +16,7 @@ public class QuadraDto {
     private String avaliacao;
     private String cnpj;
     private Integer nroAvaliacoes;
-    private ArrayList<Ambiente> ambientes;
+
 
 
 
@@ -84,11 +84,5 @@ public class QuadraDto {
         this.nroAvaliacoes = nroAvaliacoes;
     }
 
-    public ArrayList<Ambiente> getAmbientes() {
-        return ambientes;
-    }
 
-    public void setAmbientes(ArrayList<Ambiente> ambientes) {
-        this.ambientes = ambientes;
-    }
 }

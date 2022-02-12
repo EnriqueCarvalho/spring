@@ -19,8 +19,9 @@ public class Ambiente {
     @Column(name = "capacidademax")
     private Integer capacidadeMax;
 
-    @OneToMany(mappedBy = "ambiente")
-    private List<Reserva> reservas;
+/*    @OneToMany()
+    @JoinColumn(name="idambiente")
+    private List<Reserva> reservas;*/
 
     /*@ManyToOne
     @JoinColumn(name = "idquadra")
@@ -60,11 +61,11 @@ public class Ambiente {
         this.capacidadeMax = capacidadeMax;
     }
 
-    public List<Reserva> getReservas() {
+    /*public List<Reserva> getReservas() {
         return reservas;
     }
 
     public void setReservas(List<Reserva> reservas) {
         this.reservas = reservas;
-    }
+    }*/
 }

@@ -20,8 +20,9 @@ public class Cliente {
     @JoinColumn(name="idusuario")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "quadra")
-    private List<Reserva> reservas;
+  /*  @OneToMany()
+    @JoinColumn(name="idcliente")
+    private List<Reserva> reservas;*/
 
     public Integer getIdCliente() {
         return idCliente;
@@ -63,11 +64,11 @@ public class Cliente {
         this.usuario = usuario;
     }
 
-    public List<Reserva> getReservas() {
+/*    public List<Reserva> getReservas() {
         return reservas;
     }
 
     public void setReservas(List<Reserva> reservas) {
         this.reservas = reservas;
-    }
+    }*/
 }

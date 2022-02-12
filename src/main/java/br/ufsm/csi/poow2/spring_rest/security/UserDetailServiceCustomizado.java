@@ -26,7 +26,7 @@ public class UserDetailServiceCustomizado implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         System.out.println("username: "+login);
 
-        Usuario usuario = new UsuarioDAO(usuarioRepository).getUsuario(login);
+        Usuario usuario =usuarioRepository.findByLoginAndSenha(login);
 
 
         if(usuario == null){

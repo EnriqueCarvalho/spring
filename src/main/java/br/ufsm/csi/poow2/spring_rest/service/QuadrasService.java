@@ -14,21 +14,22 @@ import java.util.*;
 @Service
 public class QuadrasService {
 
-    @Autowired
-    private final QuadraRepository quadraRepository;
+
+    private  QuadraRepository quadraRepository;
+
     private ModelMapper modelMapper = new ModelMapper();
 
     public QuadrasService(QuadraRepository quadraRepository) {
         this.quadraRepository = quadraRepository;
     }
 
-    public List<QuadraDto> getQuadras(){
-        List<Quadra> quadras =new QuadraDAO(quadraRepository).getQuadras();
+    public List<Quadra> getQuadras(){
+        List<Quadra> quadras =this.quadraRepository.findAll();
         //List<Quadra> quadras = quadraRepository.findAll() ;
 
         List<QuadraDto> dto = Arrays.asList(modelMapper.map(quadras,QuadraDto[].class));
 
-        return dto;
+        return quadras;
     }
 
 }

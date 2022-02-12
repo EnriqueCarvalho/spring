@@ -15,15 +15,15 @@ public class Reserva {
     @Column(name = "idreserva")
     private Integer idReserva;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="idquadra")
     private Quadra quadra;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="idcliente")
     private Cliente cliente;
 
-    @ManyToOne
+   @OneToOne
     @JoinColumn(name="idambiente")
     private Ambiente ambiente;
 

@@ -18,11 +18,11 @@ public class Usuario {
     private String token;
 
 
-    @OneToOne(mappedBy = "usuario")
+  /*  @OneToOne(mappedBy = "usuario")
     private Quadra quadra;
 
     @OneToOne(mappedBy = "usuario")
-    private Cliente cliente;
+    private Cliente cliente;*/
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -64,7 +64,7 @@ public class Usuario {
         this.token = token;
     }
 
-    public Quadra getQuadra() {
+ /*   public Quadra getQuadra() {
         return quadra;
     }
 
@@ -78,6 +78,6 @@ public class Usuario {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
+    }*/
 
 }

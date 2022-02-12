@@ -39,6 +39,7 @@ public class FiltroAutenticacao extends OncePerRequestFilter {
                 if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
 
                     UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+                    System.out.println("CREDENCIAL:" +userDetails.getAuthorities());
 
                     if(! new JWTUtil().isTokenExpirado(token)){
 
@@ -53,15 +54,16 @@ public class FiltroAutenticacao extends OncePerRequestFilter {
                 }
 
             }
-
+            filterChain.doFilter(request, response);
         }catch (ExpiredJwtException e){
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token Expirado");
         }
 
 
 
-
-        filterChain.doFilter(request, response);
-
     }
+
+
+
+
 }

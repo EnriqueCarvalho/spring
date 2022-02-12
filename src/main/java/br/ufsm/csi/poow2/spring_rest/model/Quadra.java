@@ -38,8 +38,9 @@ public class Quadra {
     @JoinColumn(name="idusuario")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "quadra")
-    private List<Reserva> reservas;
+   /* @OneToMany()
+    @JoinColumn(name="idquadra")
+    private List<Reserva> reservas;*/
 
     public Integer getIdQuadra() {
         return idQuadra;
@@ -124,11 +125,11 @@ public class Quadra {
         this.usuario = usuario;
     }
 
-    public List<Reserva> getReservas() {
+  /*  public List<Reserva> getReservas() {
         return reservas;
     }
 
     public void setReservas(List<Reserva> reservas) {
         this.reservas = reservas;
-    }
+    }*/
 }

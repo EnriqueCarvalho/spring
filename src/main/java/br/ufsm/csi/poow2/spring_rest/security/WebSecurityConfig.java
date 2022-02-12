@@ -54,14 +54,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
               //  .authenticationProvider(this.authProvider())
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers(HttpMethod.GET,"/cliente").hasAuthority("C")
-                .antMatchers(HttpMethod.GET, "/apí/quadras/getQuadras").hasAuthority("A");
+                .antMatchers(HttpMethod.GET, "/api/quadras/getQuadras").hasAuthority("U")
+                .antMatchers(HttpMethod.GET, "/api/reservas/getReservas").hasAuthority("A")
+                .antMatchers(HttpMethod.GET, "/api/reservas/getMinhasReservas").hasAuthority("U");
               //  .and().formLogin();
 
             http.addFilterBefore(this.filtroAutenticacao(), UsernamePasswordAuthenticationFilter.class);

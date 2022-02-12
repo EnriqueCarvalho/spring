@@ -1,24 +1,25 @@
 package br.ufsm.csi.poow2.spring_rest.dao;
-
-import br.ufsm.csi.poow2.spring_rest.dto.QuadraDto;
 import br.ufsm.csi.poow2.spring_rest.model.Quadra;
 import br.ufsm.csi.poow2.spring_rest.repository.QuadraRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
-import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
-
+@Repository
 public class QuadraDAO {
 
-
-    private QuadraRepository quadraRepository;
 
     public QuadraDAO(QuadraRepository quadraRepository) {
         this.quadraRepository = quadraRepository;
     }
+
+    private QuadraRepository quadraRepository;
+
+ /*   public QuadraDAO(QuadraRepository quadraRepository) {
+        this.quadraRepository = quadraRepository;
+    }*/
 
     private String status;
    /* public ArrayList<Quadra> getQuadras(){
