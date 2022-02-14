@@ -23,13 +23,13 @@ public class QuadrasService {
         this.quadraRepository = quadraRepository;
     }
 
-    public List<Quadra> getQuadras(){
+    public List<QuadraDto> getQuadras(){
         List<Quadra> quadras =this.quadraRepository.findAll();
         //List<Quadra> quadras = quadraRepository.findAll() ;
 
         List<QuadraDto> dto = Arrays.asList(modelMapper.map(quadras,QuadraDto[].class));
 
-        return quadras;
+        return dto;
     }
 
 }

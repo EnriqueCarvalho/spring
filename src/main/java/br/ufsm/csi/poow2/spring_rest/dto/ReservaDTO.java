@@ -10,7 +10,7 @@ public class ReservaDTO {
     private Integer idReserva;
     private Date data;
     private Time horario;
-    private QuadraDto quadra;
+    private ReservaQuadraDTO quadra;
     private Ambiente ambiente;
     private ClienteDTO cliente;
 
@@ -38,11 +38,11 @@ public class ReservaDTO {
         this.horario = horario;
     }
 
-    public QuadraDto getQuadra() {
+    public ReservaQuadraDTO getQuadra() {
         return quadra;
     }
 
-    public void setQuadra(QuadraDto quadra) {
+    public void setQuadra(ReservaQuadraDTO quadra) {
         this.quadra = quadra;
     }
 

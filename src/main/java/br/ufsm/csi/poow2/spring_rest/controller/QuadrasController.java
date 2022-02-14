@@ -23,19 +23,19 @@ public class QuadrasController {
     @Autowired private QuadrasService quadrasService;
     @CrossOrigin
     @RequestMapping("/getQuadras")
-    public List<Quadra> getQuadras(){
+    public List<QuadraDto> getQuadras(){
 
 
-        List<Quadra> quadras =new QuadrasService(quadraRepository).getQuadras();
+        List<QuadraDto> quadras =new QuadrasService(quadraRepository).getQuadras();
 
         return quadras;
     }
 
     @RequestMapping("/novaQuadra")
-    public List<Quadra> novaQuadra(){
+    public List<QuadraDto> novaQuadra(){
 
 
-        List<Quadra> quadras =this.quadrasService.getQuadras();
+        List<QuadraDto> quadras =this.quadrasService.getQuadras();
 
         return quadras;
     }

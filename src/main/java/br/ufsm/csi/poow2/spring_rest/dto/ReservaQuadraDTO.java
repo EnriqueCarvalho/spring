@@ -1,13 +1,6 @@
 package br.ufsm.csi.poow2.spring_rest.dto;
 
-import br.ufsm.csi.poow2.spring_rest.model.Ambiente;
-import br.ufsm.csi.poow2.spring_rest.model.Quadra;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class QuadraDto {
-
+public class ReservaQuadraDTO {
     private Integer idQuadra;
     private String nome;
     private String bairroEnd;
@@ -16,7 +9,6 @@ public class QuadraDto {
     private String avaliacao;
     private String cnpj;
     private Integer nroAvaliacoes;
-    private List<Ambiente> ambientes;
 
 
 
@@ -83,13 +75,5 @@ public class QuadraDto {
 
     public void setNroAvaliacoes(Integer nroAvaliacoes) {
         this.nroAvaliacoes = nroAvaliacoes;
-    }
-
-    public List<Ambiente> getAmbientes() {
-        return ambientes;
-    }
-
-    public void setAmbientes(List<Ambiente> ambientes) {
-        this.ambientes = ambientes;
     }
 }
