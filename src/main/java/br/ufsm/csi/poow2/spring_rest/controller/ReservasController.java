@@ -82,4 +82,29 @@ public class ReservasController {
         }
         return status;
     }
+
+
+    @CrossOrigin
+    @PostMapping("/deletarReserva")
+    public String deletarReserva(@RequestHeader("Authorization")String header,@RequestBody Reserva reserva){
+        String status;
+        String user;
+
+        System.out.println(reserva.getIdReserva());
+        try{
+            user= new JWTUtil().getUsernameToken(header);
+            System.out.println("[Requisição de deletar reserva do usuário ]: "+user);
+            Integer idUsuario = new UsuarioService(usuarioRepository).getUsuario(user).getIdUsuario();
+            Integer idCliente = new ClienteService(clienteRepository).getClienteByUsuario(idUsuario).getIdCliente();
+
+            System.out.println("[Deletando reserva ]: ");
+            status=new ReservaService(reservaRepository).deletarReserva(idCliente,reserva);
+
+
+        }catch (Exception e ){
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT, "Não foi possível cadastrar a nova reserva", e);
+        }
+        return status;
+    }
 }

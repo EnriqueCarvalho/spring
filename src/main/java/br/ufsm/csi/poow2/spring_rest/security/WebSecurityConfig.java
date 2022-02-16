@@ -64,7 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/quadras/getQuadras").hasAnyAuthority("A","U") //hasAuthority("U")
                 .antMatchers(HttpMethod.GET, "/api/reservas/getReservas").hasAuthority("A")
                 .antMatchers(HttpMethod.GET, "/api/reservas/getMinhasReservas").hasAuthority("U")
-                .antMatchers(HttpMethod.POST, "/api/reservas/novaReserva").hasAuthority("U");
+                .antMatchers(HttpMethod.POST, "/api/reservas/novaReserva").hasAuthority("U")
+                .antMatchers(HttpMethod.POST, "/api/reservas/deletarReserva").hasAuthority("U")
+                .antMatchers(HttpMethod.POST, "api/tabauxiliar/getHorarios").permitAll();
               //  .and().formLogin();
 
             http.addFilterBefore(this.filtroAutenticacao(), UsernamePasswordAuthenticationFilter.class);

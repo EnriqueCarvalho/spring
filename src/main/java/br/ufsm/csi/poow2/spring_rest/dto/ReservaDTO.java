@@ -8,11 +8,12 @@ import java.sql.Time;
 
 public class ReservaDTO {
     private Integer idReserva;
-    private Date data;
-    private Time horario;
+    private String data;
+    private String horario;
     private ReservaQuadraDTO quadra;
     private Ambiente ambiente;
     private ClienteDTO cliente;
+    private String ativo;
 
     public Integer getIdReserva() {
         return idReserva;
@@ -22,19 +23,19 @@ public class ReservaDTO {
         this.idReserva = idReserva;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -60,5 +61,13 @@ public class ReservaDTO {
 
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
     }
 }

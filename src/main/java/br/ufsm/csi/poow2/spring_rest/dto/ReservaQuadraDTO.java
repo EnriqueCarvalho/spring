@@ -9,6 +9,7 @@ public class ReservaQuadraDTO {
     private String avaliacao;
     private String cnpj;
     private Integer nroAvaliacoes;
+    private String ativo;
 
 
 
@@ -75,5 +76,13 @@ public class ReservaQuadraDTO {
 
     public void setNroAvaliacoes(Integer nroAvaliacoes) {
         this.nroAvaliacoes = nroAvaliacoes;
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
     }
 }

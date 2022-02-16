@@ -11,10 +11,10 @@ import java.util.List;
 public interface ReservaRepository extends JpaRepository<Reserva,Integer> {
 
 
-    @Query(value = "SELECT r.* FROM RESERVAS R JOIN QUADRAS Q ON Q.IDQUADRA = R.IDQUADRA WHERE Q.IDUSUARIO = ? ", nativeQuery = true)
+    @Query(value = "SELECT r.* FROM RESERVAS R JOIN QUADRAS Q ON Q.IDQUADRA = R.IDQUADRA WHERE Q.IDUSUARIO = ? AND R.ATIVO='S' ", nativeQuery = true)
     List<Reserva> getReservaByQuadra(@Param("idquadra") Integer idQuadra);
 
 
-    @Query(value = "SELECT r.* FROM RESERVAS R JOIN CLIENTES CLI ON CLI.IDCLIENTE = R.IDCLIENTE WHERE CLI.IDUSUARIO = ? ", nativeQuery = true)
+    @Query(value = "SELECT r.* FROM RESERVAS R JOIN CLIENTES CLI ON CLI.IDCLIENTE = R.IDCLIENTE WHERE CLI.IDUSUARIO = ? AND R.ATIVO='S'", nativeQuery = true)
     List<Reserva> getReservaByCliente(@Param("idcliente") Integer idCliente);
 }

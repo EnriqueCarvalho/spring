@@ -27,8 +27,9 @@ public class Reserva {
     @JoinColumn(name="idambiente")
     private Ambiente ambiente;
 
-    private Date data;
-    private Time horario;
+    private String data;
+    private String horario;
+    private String ativo;
 
     public Integer getIdReserva() {
         return idReserva;
@@ -62,19 +63,27 @@ public class Reserva {
         this.ambiente = ambiente;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
     }
 }
