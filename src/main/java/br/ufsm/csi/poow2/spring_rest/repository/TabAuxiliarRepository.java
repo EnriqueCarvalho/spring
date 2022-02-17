@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface TabAuxiliarRepository extends JpaRepository<TabAuxiliar,Integer> {
 
-    @Query(value = "select * from tabauxiliares tab where tab.cod_tabela = 1 and tab.valor not in  (select r.horario as valor from reservas r where r.idquadra = ? and r.idambiente = ? and r.data = ?)", nativeQuery = true)
+    @Query(value = "select * from tabauxiliares tab where tab.cod_tabela = 1 and tab.valor not in  (select r.horario as valor from reservas r where r.idquadra = ? and r.idambiente = ? and r.data = ? and r.ativo='S')", nativeQuery = true)
     List<TabAuxiliar> getHorario( @Param("quadra") Integer quadra,
                                   @Param("ambiente")Integer ambiente,
                                   @Param("data")String data);

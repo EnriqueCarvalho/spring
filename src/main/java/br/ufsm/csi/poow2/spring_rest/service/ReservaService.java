@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import javax.persistence.PersistenceException;
 import java.sql.SQLException;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -47,16 +49,21 @@ public class ReservaService {
 
     public String novaReserva(Integer idCliente,Reserva reserva) throws SQLException{
         Cliente c = new Cliente();
+        String verificador = "sucess";
         try{
             c.setIdCliente(idCliente);
             reserva.setCliente(c);
             reserva.setAtivo("S");
-            this.reservaRepository.save(reserva);
+            verificador = this.validarReserva(reserva);
+
+            if (verificador.equals("sucess")) {
+                this.reservaRepository.save(reserva);
+            }
 
         }catch (PersistenceException e ){
             return "Não foi possível cadastrar a nova reserva";
         }
-        return "sucess";
+        return verificador;
 
     }
 
@@ -73,5 +80,24 @@ public class ReservaService {
         }
         return "sucess";
 
+    }
+
+    private String validarReserva(Reserva reserva){
+        try{
+            Date dataAtual  = new Date();
+            Date dataReserva=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(reserva.getData()+" "+reserva.getHorario());
+
+            System.out.println("Data atual: "+dataAtual);
+            System.out.println("Data reserva: "+dataReserva);
+            if (dataAtual.after(dataReserva)){
+                System.out.println("Data de reserva deve ser maior que a atual");
+                return "data";
+            }
+        }catch (Exception e ){
+            e.printStackTrace();
+            return "erro";
+        }
+
+        return "sucess";
     }
 }
